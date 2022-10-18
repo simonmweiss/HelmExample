@@ -12,8 +12,7 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
-        run: pwd
+      - uses: actions/checkout@v3
       - shell: bash
         run: helm package hello-helm
       - name: Upload Chart
