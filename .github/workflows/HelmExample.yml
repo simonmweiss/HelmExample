@@ -30,8 +30,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: helmChart
-      - shell: bash
-        run: helm install mein-hello-helm hello-helm
-      - shell: bash
-        run: helm test mein-hello-helm
+      - name: deploy postgres to cluster
+        uses: wahyd4/kubectl-helm-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          args: |
+            helm install mein-hello-helm hello-helm
+            helm test mein-hello-helm
         
