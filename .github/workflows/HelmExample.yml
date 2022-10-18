@@ -31,7 +31,7 @@ jobs:
         with:
           name: hello-helm
       - name: 'Deploy'
-        uses: 'deliverybot/helm@master'
+        uses: 'deliverybot/helm@v1'
         with:
           token: '${{ github.token }}'
           chart: 'hello-helm'
