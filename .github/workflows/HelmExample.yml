@@ -16,12 +16,12 @@ jobs:
       - shell: bash
         run: helm lint hello-helm
       - shell: bash
-        run: helm package hello-helm
+        run: helm package hello-helm --version test
       - name: Upload Chart
         uses: actions/upload-artifact@v3
         with:
           name: hello-helm
-          path: hello-helm-0.1.0.tgz
+          path: hello-helm-test.tgz
   test-chart:
     needs: [package-chart]
     runs-on: ubuntu-latest
