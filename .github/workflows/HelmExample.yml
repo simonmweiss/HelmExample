@@ -37,5 +37,4 @@ jobs:
         with:
           args: |
             helm install mein-hello-helm hello-helm
-            helm test mein-hello-helm
         
