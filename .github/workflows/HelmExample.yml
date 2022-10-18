@@ -30,15 +30,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: hello-helm
-      - name: 'Deploy'
-        uses: vimeda/helm@v1.6.8
-        with:
-          token: '${{ github.token }}'
-          chart: 'localRepo/hello-helm'
-          release: 'mein-hello-helm'
-          namespace: 'default'
-          repo: '.'
-          repo-alias: localRepo
-        env:
-          KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG_DATA }}'
-        
+      - name: Create kube config
+        run: |
+          mkdir -p $HOME/.kube/
+          echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
+          chmod 600 $HOME/.kube/config
+      - shell: bash
+        run: helm install mein-hello-helm hello-helm
+      - shell: bash
+        run: helm test mein-hello-helm        
