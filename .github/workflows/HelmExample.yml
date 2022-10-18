@@ -34,7 +34,7 @@ jobs:
         uses: vimeda/helm@v1.6.8
         with:
           token: '${{ github.token }}'
-          chart: './hello-helm'
+          chart: 'app'
           release: 'mein-hello-helm'
           namespace: 'default'
         env:
