@@ -36,5 +36,5 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           args: |
-            helm install mein-hello-helm hello-helm
+            helm install idi2020.azurecr.io/mein-hello-helm hello-helm
         
