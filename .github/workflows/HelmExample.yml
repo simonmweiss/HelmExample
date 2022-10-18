@@ -35,6 +35,7 @@ jobs:
         with:
           token: '${{ github.token }}'
           chart: 'hello-helm'
+          release: 'mein-hello-helm'
         env:
           KUBECONFIG_FILE: '${{ secrets.KUBE_CONFIG_DATA }}'
         
