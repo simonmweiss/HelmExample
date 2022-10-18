@@ -23,6 +23,7 @@ jobs:
           name: helmChart
           path: hello-helm-0.1.0.tgz
   test-chart:
+    needs: [package-chart]
     runs-on: ubuntu-latest
     steps:
       - name: Download Chart
