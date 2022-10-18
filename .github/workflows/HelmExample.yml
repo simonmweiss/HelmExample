@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - shell: bash
-        run: ls -la
+        run: pwd
       - shell: bash
         run: helm package hello-helm
       - name: Upload Chart
