@@ -31,7 +31,7 @@ jobs:
         with:
           name: hello-helm
       - name: 'Deploy'
-        uses: 'deliverybot/helm@v1'
+        uses: vimeda/helm@v1.6.8
         with:
           token: '${{ github.token }}'
           chart: 'hello-helm'
