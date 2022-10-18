@@ -1,0 +1,21 @@
+name: HelmExample
+
+on:
+  push:
+    branches: [ "main", "backend" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: helm package hello-helm
+      - name: Upload Chart
+        uses: actions/upload-artifact@v3
+        with:
+          name: helmChart
+          path: hello-helm-0.1.0.tgz
