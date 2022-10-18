@@ -9,10 +9,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  package:
+  package-chart:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - shell: bash
+        run: helm lint hello-helm
       - shell: bash
         run: helm package hello-helm
       - name: Upload Chart
@@ -20,3 +22,15 @@ jobs:
         with:
           name: helmChart
           path: hello-helm-0.1.0.tgz
+  test-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Chart
+        uses: actions/download-artifact@v3
+        with:
+          name: helmChart
+      - shell: bash
+        run: helm install mein-hello-helm hello-helm
+      - shell: bash
+        run: helm test mein-hello-helm
+        
