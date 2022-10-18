@@ -36,6 +36,8 @@ jobs:
           echo "${{ secrets.KUBE_CONFIG_DATA }}" > $HOME/.kube/config
           chmod 600 $HOME/.kube/config
       - shell: bash
+        run: ls -la
+      - shell: bash
         run: helm install mein-hello-helm ./hello-helm
       - shell: bash
         run: helm test mein-hello-helm        
